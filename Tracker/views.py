@@ -36,3 +36,10 @@ def add(request):
     context = {'form':form,}
     return render(request, 'Tracker/detail.html',context)
 
+
+def map(request):
+    sightings = Squirrel.objects.all().order_by('?')[:50]
+    context = {'sightings':sightings}
+    return render(request,'Tracker/map.html',context)
+
+
