@@ -1,0 +1,11 @@
+<a href="/squirreltracker/sightings/add/"> Add a new squirrel </a>
+
+{% if squirrel_list %}
+    <ul>
+    {% for squirrel in squirrel_list %}
+    <li><a href="/squirreltracker/sightings/{{squirrel.unique_squirrel_id }}/">{{ squirrel.unique_squirrel_id }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No squirrels are available.</p>
+{% endif %}
