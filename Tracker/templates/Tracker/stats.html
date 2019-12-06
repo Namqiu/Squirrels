@@ -1,0 +1,50 @@
+{% if shift_count %}
+    <ul>
+    {% for shift in shift_count %}
+    <li>{{ shift }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No shift is available.</p>
+{% endif %}
+
+{% if age_count %}
+    <ul>
+    {% for age in age_count %}
+    <li>{{ age }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No age is available.</p>
+{% endif %}
+
+{% if primary_fur_color_count %}
+    <ul>
+    {% for primary_fur_color in primary_fur_color_count %}
+    <li>{{ primary_fur_color }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No primary_fur_color is available.</p>
+{% endif %}
+
+{% if location_count %}
+    <ul>
+    {% for location in location_count %}
+    <li>{{ location }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No location is available.</p>
+{% endif %}
+
+{% if running_count %}
+    <ul>
+    {% for running in running_count %}
+    <li>{{ running }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No running is available.</p>
+{% endif %}
+
