@@ -13,4 +13,9 @@ Group name and section
 UNIS: [jw3865,cq2218]
 
 Link to the server running the application
-- For example: https://<your project id>.appspot.com/
+- https://tools-for-analytics-256000.appspot.com/
+- /squirreltracker/map
+- /squirreltracker/sightings
+- /squirreltracker/sightings/unique squirrel id
+- /squirreltracker/sightings/add
+- /squirreltracker/sightings/stats
