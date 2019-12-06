@@ -16,6 +16,6 @@ Link to the server running the application
 - https://tools-for-analytics-256000.appspot.com/
 - /squirreltracker/map
 - /squirreltracker/sightings
-- /squirreltracker/sightings/unique squirrel id
+- /squirreltracker/sightings/<unique_squirrel_id>
 - /squirreltracker/sightings/add
 - /squirreltracker/sightings/stats
