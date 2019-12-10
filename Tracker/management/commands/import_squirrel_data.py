@@ -1,6 +1,8 @@
 import datetime
+import csv
 
 from django.core.management.base import BaseCommand
+
 from Tracker.models import Squirrel
 
 class Command(BaseCommand):
@@ -19,32 +21,35 @@ class Command(BaseCommand):
 
         path = options['path'] 
 
-        f = open(path)
-        for line in f:
-            data = line.strip().split(',')
-            Squirrel.objects.get_or_create(
-                    longitude = float(data[0]),
-                    latitude = float(data[1]),
-                    unique_squirrel_id = data[2],
-                    shift = data[4],
-                    date = datetime.date(int(data[5][4:]),int(data[5][:2]),int(data[5][2:4])),
-                    age = data[7],
-                    primary_fur_color = data[8],
-                    location = data[12],
-                    specific_location = data[14],
-                    running = str_to_bool(data[15]),
-                    chasing = str_to_bool(data[16]),
-                    climbing = str_to_bool(data[17]),
-                    eating = str_to_bool(data[18]),
-                    foraging = str_to_bool(data[19]),
-                    other_activities = data[20],
-                    kuks = str_to_bool(data[21]),
-                    quaas = str_to_bool(data[22]),
-                    moans = str_to_bool(data[23]),
-                    tail_flags = str_to_bool(data[24]),
-                    tail_twitches = str_to_bool(data[25]),
-                    approaches = str_to_bool(data[26]),
-                    indifferent = str_to_bool(data[27]),
-                    runs_from = str_to_bool(data[28]),
+        with open(path) as fp:
+            reader = csv.DictReader(fp)
+            datas = list(reader)
+
+        for data in datas:
+            s = Squirrel(
+                    longitude = float(data['X']),
+                    latitude = float(data['Y']),
+                    unique_squirrel_id = data['Unique Squirrel ID'],
+                    shift = data['Shift'],
+                    date = datetime.date(int(data['Date'][4:]),int(data['Date'][:2]),int(data['Date'][2:4])),
+                    age = data['Age'],
+                    primary_fur_color = data['Primary Fur Color'],
+                    location = data['Location'],
+                    specific_location = data['Specific Location'],
+                    running = str_to_bool(data['Running']),
+                    chasing = str_to_bool(data['Chasing']),
+                    climbing = str_to_bool(data['Climbing']),
+                    eating = str_to_bool(data['Eating']),
+                    foraging = str_to_bool(data['Foraging']),
+                    other_activities = data['Other Activities'],
+                    kuks = str_to_bool(data['Kuks']),
+                    quaas = str_to_bool(data['Quaas']),
+                    moans = str_to_bool(data['Moans']),
+                    tail_flags = str_to_bool(data['Tail flags']),
+                    tail_twitches = str_to_bool(data['Tail twitches']),
+                    approaches = str_to_bool(data['Approaches']),
+                    indifferent = str_to_bool(data['Indifferent']),
+                    runs_from = str_to_bool(data['Runs from']),
                     )
-        f.close()
+            s.save()
+
